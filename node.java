@@ -2,7 +2,7 @@ public class node {
     BarangRental barang;
     node prev, next;
 
-    public node (node p, BarangRental br, node n){
+    public node(node p, BarangRental br, node n) {
         prev = p;
         barang = br;
         next = n;
@@ -21,22 +21,25 @@ class BarangRental {
         this.tahun = tahun;
         biaya_sewa = biaya;
     }
-    BarangRental(){}
+
+    BarangRental() {
+    }
 }
 
-
-class TransaksiRental{
+class TransaksiRental {
     public node head;
     public int size;
     int kdTRX = 1, lamaPinjam;
     String namaPeminjam;
     double totalBiaya;
     BarangRental barang;
-    TransaksiRental(){
+
+    TransaksiRental() {
         head = null;
         size = 0;
     }
-    TransaksiRental( String nama, int lama, BarangRental br){
+
+    TransaksiRental(String nama, int lama, BarangRental br) {
         kdTRX += 1;
         namaPeminjam = nama;
         lamaPinjam = lama;
@@ -63,38 +66,37 @@ class TransaksiRental{
         System.out.println(size);
     }
 
-
-
-    public void totBI(int lamaPinjam, int biaya){
+    public void totBI(int lamaPinjam, int biaya) {
         totalBiaya = lamaPinjam * biaya;
     }
 
-    public void PrintBarang(){
+    public void PrintBarang() {
         node current = head;
-        System.out.printf("| %-12s | %-20s | %-12s | %-7s | %-20s\n", "No TNKB", "Nama Kendaraan", "Jenis", "Tahun", "Biaya Sewa Perjam");
-       while (current != null) {
-        System.out.printf("| %-12s | %-20s | %-12s | %-7d | %-20s\n", current.barang.noTNKB, current.barang.namaKendaraan, current.barang.jenisKendaraan, current.barang.tahun, current.barang.biaya_sewa);
+        System.out.printf("| %-12s | %-20s | %-12s | %-7s | %-20s\n", "No TNKB", "Nama Kendaraan", "Jenis", "Tahun",
+                "Biaya Sewa Perjam");
+        while (current != null) {
+            System.out.printf("| %-12s | %-20s | %-12s | %-7d | %-20s\n", current.barang.noTNKB,
+                    current.barang.namaKendaraan, current.barang.jenisKendaraan, current.barang.tahun,
+                    current.barang.biaya_sewa);
 
-        current = current.next;
-       }
+            current = current.next;
+        }
     }
-    
 
-    public void PrintTrx(){
+    public void PrintTrx() {
         if (isEmpty()) {
             System.out.println("Belum ada Transaksi masuk kak :)");
-        }else{
+        } else {
             node current = head;
-            System.out.printf("| %-4s | %-8s | %-25s | %-25s | %-5s | %-15s \n", "Kode", "no TNKB", "Nama Barang", "Nama Peminjam" , "Lama Pinjam", "Total Biaya");
+            System.out.printf("| %-4s | %-8s | %-25s | %-25s | %-5s | %-15s \n", "Kode", "no TNKB", "Nama Barang",
+                    "Nama Peminjam", "Lama Pinjam", "Total Biaya");
             while (current != null) {
-                System.out.printf("| %-4s | %-8s | %-25s | %-25s | %-5s | %-15s \n", kdTRX, current.barang.noTNKB, namaPeminjam);
+                System.out.printf("| %-4s | %-8s | %-25s | %-25s | %-5s | %-15s \n", kdTRX, current.barang.noTNKB,
+                        namaPeminjam);
 
                 current = current.next;
             }
         }
     }
 
-
-
 }
-
